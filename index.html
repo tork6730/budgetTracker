@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<meta charset="UTF-8">
+	<title>Budget Tracker</title>
+</head>
+
+<body ng-controller="MainController">
+
+		
+			<Header>
+				<div class= "container">
+				<div class= "panel panel-info">
+				<h1 class= "text-center panel panel-heading">Budget Tracker</h1>
+				</div>
+				</div>
+			</Header>
+		
+
+		<div class="container">
+				<div class= "row col-xs-12">
+						<div class="col-xs-6">
+						<div class="panel panel-success ">
+							<div class="lead panel-heading">Income Entries</div>
+							<div  class= "panel-body">
+										<label>Description</label>
+											<input ng-model="newIncomeDescription" type= "text" class= "form-control">
+										<label>Amount</label>
+												<div class="input-group">
+								      				<div class="input-group-addon">$</div>
+								      				<input ng-model="newIncomeAmount" type="value" class="form-control" id="saleTotal" placeholder="Amount">
+								    			</div>
+								    			<br>
+													<button ng-click= "newTotalIncome()" class="btn btn-success form-control">
+													<span class= "glyphicon glyphicon-plus-sign"></span>Add Income</button>	
+												<br>
+												<table class= "table">
+													<th>Description</th>
+													<th class="text-right">Amount</th>
+													<tr ng-repeat="assets in incomes">
+														<td>{{assets.newIncomeDes}}</td>
+														<td class="text-right">{{assets.newIncome | currency}}</td>
+													</tr>
+												</table>
+							</div>
+						</div>
+						</div>
+						<div div class="col-xs-6">
+							<div class= "panel panel-danger">
+								<div class= "lead panel-heading">Expense Entries</div>
+								<div class= "panel-body">
+										<label>Description</label>
+											<input ng-model="newExpenseDescription" class= "form-control">							
+										<label>Amount</label>
+											<div class="input-group">
+							      				<div class="input-group-addon">$</div>
+							      				<input ng-model="newExpenseAmount" type="value" class="form-control" id="saleTotal" placeholder="Amount">
+							    			</div>
+						    			<br>
+						    		
+											<button ng-click= "newTotalExpense()" class="btn btn-danger form-control">
+											<span class="glyphicon glyphicon-minus-sign"></span>Add Expense</button>
+										<br>
+											<table class= "table">
+											<th>Description</th>
+											<th class="text-right">Amount</th>
+												<tr ng-repeat="liabilities in expenses">
+													<td>{{liabilities.newExpenseDes}}</td>
+													<td class="text-right">{{liabilities.newExpense | currency}}</td>
+												</tr>
+											</table>
+								</div>
+							</div>
+						</div>
+				</div>
+		</div>
+			<div class= "container col-xs-6 col-xs-offset-3">
+				<div class= "panel panel-info">
+						<div class= "lead panel-heading">Summary</div>
+						<div class= "panel-body">
+							<div class="text-center">Total Income</div>
+							<div class="text-center">{{tIncome() | currency}}</div>
+							<div class="text-center">Total Expenses</div>
+							<div class="text-center">{{tLiabilaties() | currency}}</div>	
+							<div class= "text-center">Left After Spending</div>
+							<div class="text-center">{{tIncome()-tLiabilaties() | currency}}</div>
+						</div>
+				</div>
+				
+			</div>
+
+
+	<!--bower:js-->
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="bower_components/jquery-3.1.0.min/index.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<!--endbower-->
+
+	<!--inject:js-->
+	<script src="index.js"></script>
+	<!--endinject-->
+</body>
+</html>
